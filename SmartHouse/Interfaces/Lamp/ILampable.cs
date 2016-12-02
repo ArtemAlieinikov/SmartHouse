@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartHouse.Interfaces
+namespace SmartHouse.Interfaces.Lamp
 {
-    interface ISetChannelList<T>
+    interface ILampable: IEnablable, IBrightable
     {
-        void SetChannelList(List<T> channelList);
     }
 }

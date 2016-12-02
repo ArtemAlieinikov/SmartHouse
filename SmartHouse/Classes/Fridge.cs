@@ -5,20 +5,41 @@ using System.Text;
 using System.Threading.Tasks;
 using SmartHouse.Interfaces;
 using SmartHouse.Enums;
+using SmartHouse.Interfaces.Lamp;
+using SmartHouse.Interfaces.LampHolder;
 
 namespace SmartHouse.Classes
 {
-    class Fridge : IFridge
+    class Fridge : Device, IEnablable, IFreezable, IDefrostable, IResetable, ILampHolderable, ILampHolderBrightable
     {
-        private bool state;
-        private bool glaciate;
-        private int glaciationLevel;
-        private FreezeLevels freezeLevel;
-        public ILamp currentLamp { get; set; }
+        protected bool glaciate;
+        protected int glaciationLevel;
+        protected FreezeLevels freezeLevel;
+        protected ILampable currentLamp;
+
+        public ILampable CurrentLamp
+        {
+            get
+            {
+                return currentLamp;
+            }
+
+            set
+            {
+                currentLamp = value;
+            }
+        }
+
+        public Fridge(string name) : base (name)
+        { }
+        public Fridge(string name, ILampable currentLamp) : base (name)
+        {
+            CurrentLamp = currentLamp;
+        }
 
         private void AddedGlaciate()
         {
-            if (glaciationLevel >= 100)
+            if (glaciationLevel <= 100)
             {
                 if (freezeLevel == FreezeLevels.Low)
                 {
@@ -42,6 +63,7 @@ namespace SmartHouse.Classes
                 glaciate = true;
             }
         }
+
         public void FreezUp()
         {
             if (freezeLevel == FreezeLevels.SuperHigh)
@@ -80,6 +102,7 @@ namespace SmartHouse.Classes
                 freezeLevel = FreezeLevels.High;
             }
         }
+
         public void Defrost()
         {
             glaciationLevel = 0;
@@ -106,27 +129,47 @@ namespace SmartHouse.Classes
 
         public void Reset()
         {
-            freezeLevel = FreezeLevels.Middle;
+            freezeLevel = FreezeLevels.Low;
         }
 
         public void TurnOnLamp()
         {
-            currentLamp.On();
+            if (CurrentLamp != null)
+            {
+                CurrentLamp.On();
+            }
         }
-
         public void TurnOffLamp()
         {
-            currentLamp.Off();
+            if (CurrentLamp != null)
+            {
+                CurrentLamp.Off();
+            }
         }
 
         public void BrightUpLamp()
         {
-            currentLamp.BrightUp();
+            if (CurrentLamp != null)
+            {
+                CurrentLamp.BrightUp();
+            }
         }
-
         public void BrightDownLamp()
         {
-            currentLamp.BrightDown();
+            if (CurrentLamp != null)
+            {
+                CurrentLamp.BrightDown();
+            }
+        }
+
+        public override string ToString()
+        {
+            string stringState = state ? "On" : "Off";
+
+            string firstPartResult = String.Format("Fridge: \"{0}\", state - {1}, freezing level - {2}, ", Name, stringState, freezeLevel);
+            string secondPartResult = String.Format("glaciate level - {0}%, is glaciate - {1}.\n\t{2}", glaciationLevel, glaciate, CurrentLamp.ToString());
+
+            return String.Concat(firstPartResult, secondPartResult);
         }
     }
 }

@@ -4,29 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SmartHouse.Interfaces;
+using SmartHouse.Interfaces.Lamp;
 using SmartHouse.Enums;
 
 namespace SmartHouse.Classes
 {
-    class Lamp : ILamp
+    class Lamp : Device, ILampable
     {
-        private bool state;
-        private Brightness brightnessLevel;
+        protected Brightness brightnessLevel;
 
-        public bool State
-        {
-            get
-            {
-                return state;
-            }
-        }
         public Brightness BrightnessLevel
         {
             get
             {
                 return brightnessLevel;
             }
+
+            set
+            {
+                brightnessLevel = value;
+            }
         }
+
+        public Lamp(string name) : base (name)
+        { }
 
         public void On()
         {
@@ -81,22 +82,8 @@ namespace SmartHouse.Classes
 
         public override string ToString()
         {
-            string stringBrightness;
             string stringState = state ? "On" : "Off";
-
-            if (BrightnessLevel == Brightness.High)
-            {
-                stringBrightness = "High";
-            }
-            else if (BrightnessLevel == Brightness.Middle)
-            {
-                stringBrightness = "Middle";
-            }
-            else
-            {
-                stringBrightness = "Low";
-            }
-            return String.Format("State {0}, {1} brightness", state, stringBrightness);
+            return String.Format("Lamp: \"{0}\", state - {1}, brightness - {2}.", name, state, brightnessLevel);
         }
     }
 }

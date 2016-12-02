@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace SmartHouse.Interfaces
 {
-    interface IGetChannelList<T>
+    interface IGetChannelList
     {
-        List<T> GetChannelList();
+        List<string> GetChannelList();
     }
 }

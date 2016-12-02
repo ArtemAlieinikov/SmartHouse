@@ -1,135 +1,145 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="SmartHouse.Classes.Fridge" BaseTypeListCollapsed="true">
-    <Position X="22" Y="5.25" Width="1.5" />
+  <Class Name="SmartHouse.Classes.AirConditioning">
+    <Position X="4.75" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAIAAACQABAAACAAARAACAAAAIAQECAgAAAAAAIA=</HashCode>
+      <HashCode>AAAAAIAAAAAABAAECAAAAAACAAAAAAAAAAgAAAAAAIA=</HashCode>
+      <FileName>Classes\AirConditioning.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SmartHouse.Classes.Device">
+    <Position X="7" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAQAAABEAAAEAAAABAAAAAA=</HashCode>
+      <FileName>Classes\Device.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SmartHouse.Classes.Fridge">
+    <Position X="9.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABIAAACQABAAECAAARAACAAAAIAQACAgAAAAAAIA=</HashCode>
       <FileName>Classes\Fridge.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="1.244" Collapsed="true" />
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="SmartHouse.Classes.Lamp" BaseTypeListCollapsed="true">
-    <Position X="23.75" Y="5.25" Width="1.5" />
+  <Class Name="SmartHouse.Classes.Lamp">
+    <Position X="7" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAIAAAAAAAAAEAQAAAAAAAAAAAEAEAABABEAAAIA=</HashCode>
+      <HashCode>AAAAAIAAAAAAAAAEAQAAAAAAAAAAAEAAAABAAEAAAIA=</HashCode>
       <FileName>Classes\Lamp.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.2" />
   </Class>
-  <Interface Name="SmartHouse.Interfaces.IAirConditioner" Collapsed="true">
-    <Position X="0.5" Y="3.5" Width="1.5" />
+  <Class Name="SmartHouse.Classes.TelevisionSet">
+    <Position X="2.5" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Interfaces\IAirConditioner.cs</FileName>
+      <HashCode>AEAgAIAAAAAABAAFAAkAAAAAAAQAEACAAQAABAACAMA=</HashCode>
+      <FileName>Classes\TelevisionSet.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SmartHouse.Classes.Radio">
+    <Position X="11.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAgAIAAAAAABAAFAAkAAAAAAAQAEACAAQAABAACAMA=</HashCode>
+      <FileName>Classes\Radio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="SmartHouse.Interfaces.IAddChannelable" Collapsed="true">
+    <Position X="14.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IAddChannelable.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="SmartHouse.Interfaces.IBrightable">
-    <Position X="11.25" Y="0.5" Width="1.5" />
+    <Position X="5.25" Y="11" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAEAAAAAAAEAAAAA=</HashCode>
       <FileName>Interfaces\IBrightable.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="SmartHouse.Interfaces.IChannel">
-    <Position X="15.5" Y="2.5" Width="1.5" />
+  <Interface Name="SmartHouse.Interfaces.IChannelable" Collapsed="true">
+    <Position X="16.5" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAIAAAAAA=</HashCode>
-      <FileName>Interfaces\IChannel.cs</FileName>
+      <HashCode>AEAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IChannelable.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="SmartHouse.Interfaces.IEnable">
-    <Position X="6" Y="1" Width="1.5" />
+  <Interface Name="SmartHouse.Interfaces.IDefrostable" Collapsed="true">
+    <Position X="18.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IDefrostable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SmartHouse.Interfaces.IEnablable">
+    <Position X="7.25" Y="11" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
-      <FileName>Interfaces\IEnable.cs</FileName>
+      <FileName>Interfaces\IEnablable.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="SmartHouse.Interfaces.IFreezable">
-    <Position X="1.25" Y="0.75" Width="1.5" />
+  <Interface Name="SmartHouse.Interfaces.IFreezable" Collapsed="true">
+    <Position X="14.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAQAAAgAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAgAAAAAAAA=</HashCode>
       <FileName>Interfaces\IFreezable.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="SmartHouse.Interfaces.IFridge" Collapsed="true">
-    <Position X="3.5" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Interfaces\IFridge.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="SmartHouse.Interfaces.IFridgeLamp">
-    <Position X="20.25" Y="2.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAIAAACQAAAAAAAAAQAAAAAAAAAAACAAAAAAAAAA=</HashCode>
-      <FileName>Interfaces\IFridgeLamp.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="SmartHouse.Interfaces.IGetChannelList&lt;T&gt;">
-    <Position X="13" Y="3" Width="1.75" />
+  <Interface Name="SmartHouse.Interfaces.IGetChannelList" Collapsed="true">
+    <Position X="16.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Interfaces\IGetChannelList.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="SmartHouse.Interfaces.ILamp" Collapsed="true">
-    <Position X="5.25" Y="3" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Interfaces\ILamp.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="SmartHouse.Interfaces.IRadio&lt;T&gt;" Collapsed="true">
-    <Position X="2.25" Y="5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Interfaces\IRadio.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="SmartHouse.Interfaces.IResetable">
-    <Position X="8.5" Y="1" Width="1.5" />
+  <Interface Name="SmartHouse.Interfaces.IResetable" Collapsed="true">
+    <Position X="16.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\IResetable.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="SmartHouse.Interfaces.ISetChannelList&lt;T&gt;">
-    <Position X="10.5" Y="3" Width="1.75" />
+  <Interface Name="SmartHouse.Interfaces.IVolume" Collapsed="true">
+    <Position X="18.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
-      <FileName>Interfaces\ISetChannelList.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="SmartHouse.Interfaces.ITelevision&lt;T&gt;" Collapsed="true">
-    <Position X="8.25" Y="3" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Interfaces\ITelevision.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="SmartHouse.Interfaces.IVolume">
-    <Position X="17.75" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAQAEAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAQAEACAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\IVolume.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="SmartHouse.Interfaces.IWritable" Collapsed="true">
-    <Position X="18.5" Y="6.25" Width="1.5" />
+  <Interface Name="SmartHouse.Interfaces.Lamp.ILampable">
+    <Position X="5.25" Y="13.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
-      <FileName>Interfaces\IWritable.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Lamp\ILampable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SmartHouse.Interfaces.LampHolder.ILampHolderable" Collapsed="true">
+    <Position X="18.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABIAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\LampHolder\ILampHolderable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SmartHouse.Interfaces.LampHolder.ILampHolderBrightable" Collapsed="true">
+    <Position X="14.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\LampHolder\ILampHolderBrightable.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="SmartHouse.Enums.Brightness" Collapsed="true">
-    <Position X="25.75" Y="6.25" Width="1.5" />
+    <Position X="14.75" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAgAAAAAAAAQAAAAAAA=</HashCode>
       <FileName>Enums\Brightness.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="SmartHouse.Enums.FreezeLevels" Collapsed="true">
-    <Position X="25.75" Y="5.5" Width="1.5" />
+    <Position X="16.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAgAAAAAAAAAgAAAAAAAAgAAAAAAAAQAAAAAAA=</HashCode>
       <FileName>Enums\FreezeLevels.cs</FileName>

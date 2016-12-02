@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SmartHouse.Interfaces
 {
-    interface IChannel
+    interface IChannelable
     {
-        int Cnannel { get; set; }
+        string CurrentChannel { get; }
         void ChannelUp();
         void ChannelDown();
     }

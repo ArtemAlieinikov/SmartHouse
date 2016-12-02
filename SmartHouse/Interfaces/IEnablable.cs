@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace SmartHouse.Interfaces
 {
-    interface ITelevision<T> : IEnable, IVolume, IChannel, IBrightable, IGetChannelList<T>, ISetChannelList<T>, IResetable
+    interface IEnablable
     {
+        void On();
+        void Off();
     }
 }

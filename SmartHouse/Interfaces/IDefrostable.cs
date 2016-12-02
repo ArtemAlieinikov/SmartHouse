@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace SmartHouse.Interfaces
 {
-    interface IWritable
+    interface IDefrostable
     {
-        string Data { get; set; }
+        void Defrost();
     }
 }

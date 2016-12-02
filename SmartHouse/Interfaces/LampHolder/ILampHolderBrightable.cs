@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartHouse.Interfaces
+namespace SmartHouse.Interfaces.LampHolder
 {
-    interface IFridgeLamp
+    interface ILampHolderBrightable
     {
-        ILamp currentLamp { get; set; }
-        void TurnOnLamp();
-        void TurnOffLamp();
         void BrightUpLamp();
         void BrightDownLamp();
     }

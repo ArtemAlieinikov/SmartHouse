@@ -11,6 +11,5 @@ namespace SmartHouse.Interfaces
     {
         void FreezUp();
         void FreezDown();
-        void Defrost();
     }
 }

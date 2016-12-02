@@ -11,5 +11,6 @@ namespace SmartHouse.Interfaces
         int VolumeLevel { get; set; }
         void VolumeUp();
         void VolumeDown();
+        void SetVolume(int number);
     }
 }

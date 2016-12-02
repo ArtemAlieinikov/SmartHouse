@@ -41,25 +41,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\AirConditioning.cs" />
+    <Compile Include="Classes\Device.cs" />
     <Compile Include="Classes\Fridge.cs" />
     <Compile Include="Classes\Lamp.cs" />
+    <Compile Include="Classes\Radio.cs" />
+    <Compile Include="Classes\TelevisionSet.cs" />
     <Compile Include="Enums\Brightness.cs" />
     <Compile Include="Enums\FreezeLevels.cs" />
-    <Compile Include="Interfaces\IAirConditioner.cs" />
     <Compile Include="Interfaces\IBrightable.cs" />
-    <Compile Include="Interfaces\IChannel.cs" />
-    <Compile Include="Interfaces\IEnable.cs" />
+    <Compile Include="Interfaces\IChannelable.cs" />
+    <Compile Include="Interfaces\IDefrostable.cs" />
+    <Compile Include="Interfaces\IEnablable.cs" />
     <Compile Include="Interfaces\IFreezable.cs" />
-    <Compile Include="Interfaces\IFridge.cs" />
-    <Compile Include="Interfaces\IFridgeLamp.cs" />
     <Compile Include="Interfaces\IGetChannelList.cs" />
-    <Compile Include="Interfaces\ILamp.cs" />
-    <Compile Include="Interfaces\IRadio.cs" />
+    <Compile Include="Interfaces\LampHolder\ILampHolderBrightable.cs" />
+    <Compile Include="Interfaces\Lamp\ILampable.cs" />
     <Compile Include="Interfaces\IResetable.cs" />
-    <Compile Include="Interfaces\ISetChannelList.cs" />
-    <Compile Include="Interfaces\ITelevision.cs" />
+    <Compile Include="Interfaces\IAddChannelable.cs" />
+    <Compile Include="Interfaces\LampHolder\ILampHolderable.cs" />
     <Compile Include="Interfaces\IVolume.cs" />
-    <Compile Include="Interfaces\IWritable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -67,9 +68,7 @@
     <None Include="App.config" />
     <None Include="SmartHouseClassDiagram.cd" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Delegates\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
