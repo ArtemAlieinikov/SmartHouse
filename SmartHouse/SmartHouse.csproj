@@ -42,19 +42,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\AirConditioning.cs" />
+    <Compile Include="Classes\ChannelModule.cs" />
     <Compile Include="Classes\Device.cs" />
     <Compile Include="Classes\Fridge.cs" />
     <Compile Include="Classes\Lamp.cs" />
     <Compile Include="Classes\Radio.cs" />
     <Compile Include="Classes\TelevisionSet.cs" />
+    <Compile Include="Classes\ValueModule.cs" />
     <Compile Include="Enums\Brightness.cs" />
     <Compile Include="Enums\FreezeLevels.cs" />
+    <Compile Include="Interfaces\ChannelModule\IChannelableModule.cs" />
+    <Compile Include="Interfaces\ChannelModule\IChannelsActionable.cs" />
+    <Compile Include="Interfaces\ChannelModule\IChannelWriteable.cs" />
+    <Compile Include="Interfaces\ChannelModule\IChannelsReadable.cs" />
     <Compile Include="Interfaces\IBrightable.cs" />
     <Compile Include="Interfaces\IChannelable.cs" />
     <Compile Include="Interfaces\IDefrostable.cs" />
     <Compile Include="Interfaces\IEnablable.cs" />
     <Compile Include="Interfaces\IFreezable.cs" />
     <Compile Include="Interfaces\IGetChannelList.cs" />
+    <Compile Include="Interfaces\ValueModule\IVariable.cs" />
     <Compile Include="Interfaces\LampHolder\ILampHolderBrightable.cs" />
     <Compile Include="Interfaces\Lamp\ILampable.cs" />
     <Compile Include="Interfaces\IResetable.cs" />

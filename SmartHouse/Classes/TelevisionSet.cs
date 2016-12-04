@@ -4,59 +4,77 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SmartHouse.Interfaces;
+using SmartHouse.Interfaces.ChannelModule;
 
 namespace SmartHouse.Classes
 {
     class TelevisionSet : Device, IEnablable, IVolume, IChannelable, IGetChannelList, IAddChannelable, IResetable
     {
-        protected int actualChannel;
-        protected int numberOfChannels;
-        protected Dictionary<int, string[]> channelList;
-        protected int volume;
+        private IVariable volumeModule;
+        private IChannelableModule channelModule;
 
+        public IVariable VolumeModule 
+        {
+            get 
+            {
+                return volumeModule;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("Value module is null");
+                }
+                else
+                {
+                    volumeModule = value;
+                }
+            }
+        }
+        public IChannelableModule ChannelModule
+        {
+            get
+            {
+                return channelModule;
+            }
+
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("Channel module is null");
+                }
+                else
+                {
+                    channelModule = value;
+                }
+            }
+        }
         public string CurrentChannel
         {
             get
             {
-                if (channelList != null)
-                {
-                    string[] result = channelList[actualChannel];
-                    return String.Format("{0} : name - {1}, frequency - {2}", actualChannel + 1, result[0], result[1]);
-                }
-                else
-                {
-                    return "There are no channels";
-                }
+                return ChannelModule.Current;
             }
         }
         public int VolumeLevel
         {
             get
             {
-                return volume;
+                return volumeModule.Value;
             }
 
             set
             {
-                if (value < 0)
-                {
-                    volume = 0;
-                }
-                else if (value > 100)
-                {
-                    volume = 100;
-                }
-                else
-                {
-                    volume = value;
-                }
+                volumeModule.Value = value;
             }
         }
 
-        public TelevisionSet(string name)
+        public TelevisionSet(string name, IChannelableModule channelModule, IVariable volumeModule)
             : base(name)
         {
-
+            VolumeModule = volumeModule;
+            ChannelModule = channelModule;
         }
 
         public void On()
@@ -76,76 +94,47 @@ namespace SmartHouse.Classes
 
         public void VolumeUp()
         {
-            VolumeLevel += 5;
+            VolumeModule.Up();
         }
         public void VolumeDown()
         {
-            VolumeLevel -= 5;
+            VolumeModule.Down();
         }
         public void SetVolume(int number)
         {
-            VolumeLevel = number;
+            VolumeModule.Value = number;
         }
 
         public void ChannelUp()
         {
-            if (actualChannel < channelList.Count - 1)
-            {
-                actualChannel++;
-            }
+            ChannelModule.Up();
         }
         public void ChannelDown()
         {
-            if (actualChannel > 0)
-            {
-                actualChannel--;
-            }
+            ChannelModule.Down();
         }
 
         public List<string> GetChannelList()
         {
-            List<string> result = new List<string>();
-            if (channelList != null)
-            {
-                foreach (KeyValuePair<int, string[]> channel in channelList)
-                {
-                    result.Add(String.Format("{0} channel : name - {1}, frequency - {2}", channel.Key + 1, channel.Value[0], channel.Value[1]));
-                }
-            }
-            else
-            {
-                throw new NullReferenceException("The channel list is missing.");
-            }
-            return result;
+            return ChannelModule.ReadChannelList();
         }
 
         public void AddChannel(string nameOfChannel, double frequencie)
         {
-            if (channelList == null)
-            {
-                channelList = new Dictionary<int, string[]>();
-                channelList.Add(numberOfChannels, new string[] { nameOfChannel, frequencie.ToString() });
-                numberOfChannels++;
-            }
-            else
-            {
-                channelList.Add(numberOfChannels, new string[] { nameOfChannel, frequencie.ToString() });
-                numberOfChannels++;
-            }
+            ChannelModule.WriteNewChannel(nameOfChannel, frequencie);
         }
 
         public void Reset()
         {
-            numberOfChannels = 0;
-            actualChannel = 0;
-            VolumeLevel = 50;
-            channelList = null;
+            IResetable channelModule = (IResetable)ChannelModule;
+            channelModule.Reset();
+            VolumeModule.Reset();
         }
 
         public override string ToString()
         {
             string stringState = state ? "On" : "Off";
-            return String.Format("Television: \"{0}\", state - {1}, volume - {2}%, number of channels - {3}.\n\tCurrent channel - {4}.", Name, stringState, volume, numberOfChannels, CurrentChannel);
+            return String.Format("Television: \"{0}\", state - {1}, volume - {2}%, number of channels - {3}.\n\tCurrent channel - {4}.", Name, stringState, VolumeLevel, ChannelModule.NumberOfChannels, CurrentChannel);
         }
     }
 }
