@@ -46,7 +46,7 @@ namespace SmartHouse.Classes
             Name = name;
         }
 
-        protected void InvokeEventStatusChanged(string message)
+        public void InvokeEventStatusChanged(string message)
         {
             if (EventStateChanged != null)
             {

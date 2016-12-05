@@ -23,6 +23,7 @@ namespace SmartHouse.Classes
             set
             {
                 brightnessLevel = value;
+                InvokeEventStatusChanged(String.Format("Lamp: \"{0}\" has changed the brightness to {1}.", name, value));
             }
         }
 
@@ -34,6 +35,7 @@ namespace SmartHouse.Classes
             if (!State)
             {
                 state = true;
+                InvokeEventStatusChanged(String.Format("Lamp: \"{0}\" has turned on.", name));
             }
             else { }
         }
@@ -42,6 +44,7 @@ namespace SmartHouse.Classes
             if (State)
             {
                 state = false;
+                InvokeEventStatusChanged(String.Format("Lamp: \"{0}\" has turned off.", name));
             }
             else { }
         }
@@ -54,12 +57,12 @@ namespace SmartHouse.Classes
             }
             else if (brightnessLevel == Brightness.Middle)
             {
-                brightnessLevel = Brightness.High;
+                BrightnessLevel = Brightness.High;
                 return;
             }
             else
             {
-                brightnessLevel = Brightness.Middle;
+                BrightnessLevel = Brightness.Middle;
             }
         }
         public void BrightDown()

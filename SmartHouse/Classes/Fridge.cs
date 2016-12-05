@@ -27,6 +27,7 @@ namespace SmartHouse.Classes
             set
             {
                 currentLamp = value;
+                InvokeEventStatusChanged(String.Format("Fridge: \"{0}\" has changed the lamp to {1}.", name, ((Device)value).Name));
             }
         }
 
@@ -82,6 +83,7 @@ namespace SmartHouse.Classes
             {
                 freezeLevel = FreezeLevels.Middle;
             }
+            InvokeEventStatusChanged(String.Format("Fridge: \"{0}\" has changed the temperature to {1}.", name, freezeLevel));
         }
         public void FreezDown()
         {
@@ -101,12 +103,14 @@ namespace SmartHouse.Classes
             {
                 freezeLevel = FreezeLevels.High;
             }
+            InvokeEventStatusChanged(String.Format("Fridge: \"{0}\" has changed the temperature to {1}.", name, freezeLevel));
         }
 
         public void Defrost()
         {
             glaciationLevel = 0;
             glaciate = false;
+            InvokeEventStatusChanged(String.Format("Fridge: \"{0}\" has defrosted.", name));
         }
 
         public void On()
@@ -115,6 +119,7 @@ namespace SmartHouse.Classes
             {
                 AddedGlaciate();
                 state = true;
+                InvokeEventStatusChanged(String.Format("Fridge: \"{0}\" has turned on.", name));
             }
             else { }
         }
@@ -123,6 +128,7 @@ namespace SmartHouse.Classes
             if (state)
             {
                 state = false;
+                InvokeEventStatusChanged(String.Format("Fridge: \"{0}\" has turned off.", name));
             }
             else { }
         }
@@ -130,36 +136,45 @@ namespace SmartHouse.Classes
         public void Reset()
         {
             freezeLevel = FreezeLevels.Low;
+            InvokeEventStatusChanged(String.Format("Fridge: \"{0}\" has reseted.", name));
         }
 
         public void TurnOnLamp()
         {
             if (CurrentLamp != null)
             {
+                InvokeEventStatusChanged(String.Format("Fridge: \"{0}\" has turned on the {1} lamp", name, ((Device)currentLamp).Name));
                 CurrentLamp.On();
             }
+            else { }
         }
         public void TurnOffLamp()
         {
             if (CurrentLamp != null)
             {
+                InvokeEventStatusChanged(String.Format("Fridge: \"{0}\" has turned off the {1} lamp", name, ((Device)currentLamp).Name));
                 CurrentLamp.Off();
             }
+            else { }
         }
 
         public void BrightUpLamp()
         {
             if (CurrentLamp != null)
             {
+                InvokeEventStatusChanged(String.Format("Fridge: \"{0}\" has changed the {1} lapm brightness to {2}.", name, ((Device)currentLamp).Name, CurrentLamp.BrightnessLevel));
                 CurrentLamp.BrightUp();
             }
+            else { }
         }
         public void BrightDownLamp()
         {
             if (CurrentLamp != null)
             {
+                InvokeEventStatusChanged(String.Format("Fridge: \"{0}\" has changed the {1} lapm brightness to {2}.", name, ((Device)currentLamp).Name, CurrentLamp.BrightnessLevel));
                 CurrentLamp.BrightDown();
             }
+            else { }
         }
 
         public override string ToString()

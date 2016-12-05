@@ -48,6 +48,7 @@
     <Compile Include="Classes\Lamp.cs" />
     <Compile Include="Classes\Radio.cs" />
     <Compile Include="Classes\TelevisionSet.cs" />
+    <Compile Include="Classes\TextLoggingModule.cs" />
     <Compile Include="Classes\ValueModule.cs" />
     <Compile Include="Enums\Brightness.cs" />
     <Compile Include="Enums\FreezeLevels.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Interfaces\IEnablable.cs" />
     <Compile Include="Interfaces\IFreezable.cs" />
     <Compile Include="Interfaces\IGetChannelList.cs" />
+    <Compile Include="Interfaces\IWritable.cs" />
     <Compile Include="Interfaces\ValueModule\IVariable.cs" />
     <Compile Include="Interfaces\LampHolder\ILampHolderBrightable.cs" />
     <Compile Include="Interfaces\Lamp\ILampable.cs" />

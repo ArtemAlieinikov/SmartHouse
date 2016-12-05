@@ -28,6 +28,7 @@ namespace SmartHouse.Classes
                 else
                 {
                     volumeModule = value;
+                    InvokeEventStatusChanged(String.Format("Radio: \"{0}\" has changed the volume module.", name));
                 }
             }
         }
@@ -47,6 +48,7 @@ namespace SmartHouse.Classes
                 else
                 {
                     channelModule = value;
+                    InvokeEventStatusChanged(String.Format("Radio: \"{0}\" has changed the volume module.", name));
                 }
             }
         }
@@ -67,6 +69,7 @@ namespace SmartHouse.Classes
             set
             {
                 volumeModule.Value = value;
+                InvokeEventStatusChanged(String.Format("Radio: \"{0}\" has changed the volume level to {1}.", name, value));
             }
         }
 
@@ -82,36 +85,56 @@ namespace SmartHouse.Classes
             if (!State)
             {
                 State = true;
+                InvokeEventStatusChanged(String.Format("Radio: \"{0}\" has turned on.", name));
             }
+            else { }
         }
         public void Off()
         {
             if (State)
             {
                 State = false;
+                InvokeEventStatusChanged(String.Format("Radio: \"{0}\" has turned off.", name));
             }
         }
 
         public void VolumeUp()
         {
-            VolumeModule.Up();
+            if (VolumeModule.Up())
+            {
+                InvokeEventStatusChanged(String.Format("Radio: \"{0}\" has changed the volume level to {1}.", name, VolumeLevel));
+            }
+            else { }
         }
         public void VolumeDown()
         {
-            VolumeModule.Down();
+            if (VolumeModule.Down())
+            {
+                InvokeEventStatusChanged(String.Format("Radio: \"{0}\" has changed the volume level to {1}.", name, VolumeLevel));
+            }
+            else { }
         }
         public void SetVolume(int number)
         {
             VolumeModule.Value = number;
+            InvokeEventStatusChanged(String.Format("Radio: \"{0}\" has changed volume level to {1}.", name, number));
         }
 
         public void ChannelUp()
         {
-            ChannelModule.Up();
+            if (ChannelModule.Up())
+            {
+                InvokeEventStatusChanged(String.Format("Radio: \"{0}\" has changed channel to {1}.", name, ChannelModule.Current));
+            }
+            else { }
         }
         public void ChannelDown()
         {
-            ChannelModule.Down();
+            if (ChannelModule.Up())
+            {
+                InvokeEventStatusChanged(String.Format("Radio: \"{0}\" has changed channel to {1}.", name, ChannelModule.Current));
+            }
+            else { }
         }
 
         public List<string> GetChannelList()
@@ -122,6 +145,7 @@ namespace SmartHouse.Classes
         public void AddChannel(string nameOfChannel, double frequencie)
         {
             ChannelModule.WriteNewChannel(nameOfChannel, frequencie);
+            InvokeEventStatusChanged(String.Format("Radio: \"{0}\" has added new {1} channel.", name, nameOfChannel));
         }
 
         public void Reset()
@@ -129,6 +153,7 @@ namespace SmartHouse.Classes
             IResetable channelModule = (IResetable)ChannelModule;
             channelModule.Reset();
             VolumeModule.Reset();
+            InvokeEventStatusChanged(String.Format("Radio: \"{0}\" has reseted.", name));
         }
 
         public override string ToString()

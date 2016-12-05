@@ -20,16 +20,18 @@ namespace SmartHouse.Classes
             if (!State)
             {
                 State = true;
-                InvokeEventStatusChanged("Air conditioning: \"{0}\" has turned on.");
+                InvokeEventStatusChanged(String.Format("Air conditioning: \"{0}\" has turned on.", name));
             }
+            else { }
         }
         public void Off()
         {
             if (State)
             {
                 State = false;
-                InvokeEventStatusChanged("Air conditioning: \"{0}\" has turned off.");
+                InvokeEventStatusChanged(String.Format("Air conditioning: \"{0}\" has turned off.", name));
             }
+            else { }
         }
 
         public void FreezUp()
@@ -50,7 +52,7 @@ namespace SmartHouse.Classes
             {
                 freezeLevel = FreezeLevels.Middle;
             }
-            InvokeEventStatusChanged(String.Format("Air conditioning: \"{0}\" has increased the temperature to {0}.", freezeLevel));
+            InvokeEventStatusChanged(String.Format("Air conditioning: \"{0}\" has changed the temperature to {1}.",name, freezeLevel));
         }
         public void FreezDown()
         {
@@ -70,13 +72,13 @@ namespace SmartHouse.Classes
             {
                 freezeLevel = FreezeLevels.High;
             }
-            InvokeEventStatusChanged(String.Format("Air conditioning: \"{0}\" has reduce the temperature to {0}.", freezeLevel));
+            InvokeEventStatusChanged(String.Format("Air conditioning: \"{0}\" has changed the temperature to {1}.", name, freezeLevel));
         }
 
         public void Reset()
         {
             freezeLevel = FreezeLevels.Low;
-            InvokeEventStatusChanged("Air conditioning: \"{0}\" has reseted.");
+            InvokeEventStatusChanged(String.Format("Air conditioning: \"{0}\" has reseted.", name));
         }
 
         public override string ToString()
