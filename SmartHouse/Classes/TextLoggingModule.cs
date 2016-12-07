@@ -13,6 +13,10 @@ namespace SmartHouse.Classes
         private string pathToDIrectory;
         private string pathToFile;
 
+        /// <summary>
+        /// </summary>
+        /// <param name="adress">Path to the log files</param>
+        /// <exception cref="System.DirectoryNotFoundException">Thrown when Directory not found.</exception>
         public TextLoggingModule(string adress)
         {
 

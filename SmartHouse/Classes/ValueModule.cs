@@ -76,6 +76,9 @@ namespace SmartHouse.Classes
             }
         }
 
+        /// <summary>
+        /// </summary>
+        /// <exception cref="System.FormatException">Thrown when arguments are incorrect</exception>
         public ValueModule(int min, int max, int step, int value)
         {
             if (max <= min)

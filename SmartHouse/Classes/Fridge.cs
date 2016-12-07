@@ -10,7 +10,7 @@ using SmartHouse.Interfaces.LampHolder;
 
 namespace SmartHouse.Classes
 {
-    class Fridge : Device, IEnablable, IFreezable, IDefrostable, IResetable, ILampHolderable, ILampHolderBrightable
+    class Fridge : Device, IFreezable, IDefrostable, IResetable, ILampHolderable, ILampHolderBrightable
     {
         protected bool glaciate;
         protected int glaciationLevel;
@@ -27,7 +27,7 @@ namespace SmartHouse.Classes
             set
             {
                 currentLamp = value;
-                InvokeEventStatusChanged(String.Format("Fridge: \"{0}\" has changed the lamp to {1}.", name, ((Device)value).Name));
+                InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed the lamp to {2}.",this.GetType(), name, ((Device)value).Name));
             }
         }
 
@@ -83,7 +83,7 @@ namespace SmartHouse.Classes
             {
                 freezeLevel = FreezeLevels.Middle;
             }
-            InvokeEventStatusChanged(String.Format("Fridge: \"{0}\" has changed the temperature to {1}.", name, freezeLevel));
+            InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed the temperature to {2}.",this.GetType(), name, freezeLevel));
         }
         public void FreezDown()
         {
@@ -103,47 +103,42 @@ namespace SmartHouse.Classes
             {
                 freezeLevel = FreezeLevels.High;
             }
-            InvokeEventStatusChanged(String.Format("Fridge: \"{0}\" has changed the temperature to {1}.", name, freezeLevel));
+            InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed the temperature to {2}.", this.GetType(), name, freezeLevel));
         }
 
         public void Defrost()
         {
             glaciationLevel = 0;
             glaciate = false;
-            InvokeEventStatusChanged(String.Format("Fridge: \"{0}\" has defrosted.", name));
+            InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has defrosted.",this.GetType(), name));
         }
 
-        public void On()
+        public override bool On()
         {
-            if (!state)
+            bool result;
+            if (base.On())
             {
                 AddedGlaciate();
-                state = true;
-                InvokeEventStatusChanged(String.Format("Fridge: \"{0}\" has turned on.", name));
+                result = true;
             }
-            else { }
-        }
-        public void Off()
-        {
-            if (state)
+            else
             {
-                state = false;
-                InvokeEventStatusChanged(String.Format("Fridge: \"{0}\" has turned off.", name));
+                result = false;
             }
-            else { }
+            return result;
         }
 
         public void Reset()
         {
             freezeLevel = FreezeLevels.Low;
-            InvokeEventStatusChanged(String.Format("Fridge: \"{0}\" has reseted.", name));
+            InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has reseted.",this.GetType(), name));
         }
 
         public void TurnOnLamp()
         {
             if (CurrentLamp != null)
             {
-                InvokeEventStatusChanged(String.Format("Fridge: \"{0}\" has turned on the {1} lamp", name, ((Device)currentLamp).Name));
+                InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has turned on the {2} lamp",this.GetType(), name, ((Device)currentLamp).Name));
                 CurrentLamp.On();
             }
             else { }
@@ -152,7 +147,7 @@ namespace SmartHouse.Classes
         {
             if (CurrentLamp != null)
             {
-                InvokeEventStatusChanged(String.Format("Fridge: \"{0}\" has turned off the {1} lamp", name, ((Device)currentLamp).Name));
+                InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has turned off the {2} lamp",this.GetType(), name, ((Device)currentLamp).Name));
                 CurrentLamp.Off();
             }
             else { }
@@ -162,7 +157,7 @@ namespace SmartHouse.Classes
         {
             if (CurrentLamp != null)
             {
-                InvokeEventStatusChanged(String.Format("Fridge: \"{0}\" has changed the {1} lapm brightness to {2}.", name, ((Device)currentLamp).Name, CurrentLamp.BrightnessLevel));
+                InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed the {2} lapm brightness to {3}.",this.GetType(), name, ((Device)currentLamp).Name, CurrentLamp.BrightnessLevel));
                 CurrentLamp.BrightUp();
             }
             else { }
@@ -171,7 +166,7 @@ namespace SmartHouse.Classes
         {
             if (CurrentLamp != null)
             {
-                InvokeEventStatusChanged(String.Format("Fridge: \"{0}\" has changed the {1} lapm brightness to {2}.", name, ((Device)currentLamp).Name, CurrentLamp.BrightnessLevel));
+                InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed the {2} lapm brightness to {3}.",this.GetType(), name, ((Device)currentLamp).Name, CurrentLamp.BrightnessLevel));
                 CurrentLamp.BrightDown();
             }
             else { }

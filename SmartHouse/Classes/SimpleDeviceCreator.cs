@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartHouse.Interfaces
+namespace SmartHouse.Classes
 {
-    interface IEnablable
+    abstract class SimpleDeviceCreator
     {
-        bool On();
-        bool Off();
+        public abstract Device Create(string name);
     }
 }

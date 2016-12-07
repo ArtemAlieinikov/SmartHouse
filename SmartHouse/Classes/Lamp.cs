@@ -23,31 +23,12 @@ namespace SmartHouse.Classes
             set
             {
                 brightnessLevel = value;
-                InvokeEventStatusChanged(String.Format("Lamp: \"{0}\" has changed the brightness to {1}.", name, value));
+                InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed the brightness to {2}.",this.GetType(), name, value));
             }
         }
 
         public Lamp(string name) : base (name)
         { }
-
-        public void On()
-        {
-            if (!State)
-            {
-                state = true;
-                InvokeEventStatusChanged(String.Format("Lamp: \"{0}\" has turned on.", name));
-            }
-            else { }
-        }
-        public void Off()
-        {
-            if (State)
-            {
-                state = false;
-                InvokeEventStatusChanged(String.Format("Lamp: \"{0}\" has turned off.", name));
-            }
-            else { }
-        }
 
         public void BrightUp()
         {
@@ -86,7 +67,7 @@ namespace SmartHouse.Classes
         public override string ToString()
         {
             string stringState = state ? "On" : "Off";
-            return String.Format("Lamp: \"{0}\", state - {1}, brightness - {2}.", name, state, brightnessLevel);
+            return String.Format("Lamp: \"{0}\", state - {1}, brightness - {2}.", name, stringState, brightnessLevel);
         }
     }
 }

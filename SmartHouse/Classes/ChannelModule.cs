@@ -73,6 +73,10 @@ namespace SmartHouse.Classes
             return result;
         }
 
+        /// <summary>
+        /// </summary>
+        /// <returns>List of the channels</returns>
+        /// <exception cref="System.NullReferenceException">Thrown when Dictionary of channels is null</exception>
         public List<string> ReadChannelList()
         {
             List<string> result = new List<string>();

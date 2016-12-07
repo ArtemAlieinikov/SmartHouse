@@ -8,11 +8,14 @@ using SmartHouse.Interfaces.ChannelModule;
 
 namespace SmartHouse.Classes
 {
-    class Radio : Device, IEnablable, IVolume, IChannelable, IGetChannelList, IAddChannelable, IResetable
+    class Radio : Device, IVolume, IChannelable, IGetChannelList, IAddChannelable, IResetable
     {
         private IVariable volumeModule;
         private IChannelableModule channelModule;
 
+        /// <summary>
+        /// </summary>
+        /// <exception cref="System.ArgumentNullException">Thrown when argument is null</exception>
         public IVariable VolumeModule
         {
             get
@@ -28,10 +31,13 @@ namespace SmartHouse.Classes
                 else
                 {
                     volumeModule = value;
-                    InvokeEventStatusChanged(String.Format("Radio: \"{0}\" has changed the volume module.", name));
+                    InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed the volume module.", this.GetType(), name));
                 }
             }
         }
+        /// <summary>
+        /// </summary>
+        /// <exception cref="System.ArgumentNullException">Thrown when argument is null</exception>
         public IChannelableModule ChannelModule
         {
             get
@@ -48,7 +54,7 @@ namespace SmartHouse.Classes
                 else
                 {
                     channelModule = value;
-                    InvokeEventStatusChanged(String.Format("Radio: \"{0}\" has changed the volume module.", name));
+                    InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed the volume module.", this.GetType(), name));
                 }
             }
         }
@@ -69,7 +75,7 @@ namespace SmartHouse.Classes
             set
             {
                 volumeModule.Value = value;
-                InvokeEventStatusChanged(String.Format("Radio: \"{0}\" has changed the volume level to {1}.", name, value));
+                InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed the volume level to {2}.", this.GetType(), name, value));
             }
         }
 
@@ -80,29 +86,11 @@ namespace SmartHouse.Classes
             ChannelModule = channelModule;
         }
 
-        public void On()
-        {
-            if (!State)
-            {
-                State = true;
-                InvokeEventStatusChanged(String.Format("Radio: \"{0}\" has turned on.", name));
-            }
-            else { }
-        }
-        public void Off()
-        {
-            if (State)
-            {
-                State = false;
-                InvokeEventStatusChanged(String.Format("Radio: \"{0}\" has turned off.", name));
-            }
-        }
-
         public void VolumeUp()
         {
             if (VolumeModule.Up())
             {
-                InvokeEventStatusChanged(String.Format("Radio: \"{0}\" has changed the volume level to {1}.", name, VolumeLevel));
+                InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed the volume level to {2}.", this.GetType(), name, VolumeLevel));
             }
             else { }
         }
@@ -110,21 +98,21 @@ namespace SmartHouse.Classes
         {
             if (VolumeModule.Down())
             {
-                InvokeEventStatusChanged(String.Format("Radio: \"{0}\" has changed the volume level to {1}.", name, VolumeLevel));
+                InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed the volume level to {2}.", this.GetType(), name, VolumeLevel));
             }
             else { }
         }
         public void SetVolume(int number)
         {
             VolumeModule.Value = number;
-            InvokeEventStatusChanged(String.Format("Radio: \"{0}\" has changed volume level to {1}.", name, number));
+            InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed volume level to {2}.", this.GetType(), name, number));
         }
 
         public void ChannelUp()
         {
             if (ChannelModule.Up())
             {
-                InvokeEventStatusChanged(String.Format("Radio: \"{0}\" has changed channel to {1}.", name, ChannelModule.Current));
+                InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed channel to {2}.", this.GetType(), name, ChannelModule.Current));
             }
             else { }
         }
@@ -132,7 +120,7 @@ namespace SmartHouse.Classes
         {
             if (ChannelModule.Up())
             {
-                InvokeEventStatusChanged(String.Format("Radio: \"{0}\" has changed channel to {1}.", name, ChannelModule.Current));
+                InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed channel to {2}.", this.GetType(), name, ChannelModule.Current));
             }
             else { }
         }
@@ -145,7 +133,7 @@ namespace SmartHouse.Classes
         public void AddChannel(string nameOfChannel, double frequencie)
         {
             ChannelModule.WriteNewChannel(nameOfChannel, frequencie);
-            InvokeEventStatusChanged(String.Format("Radio: \"{0}\" has added new {1} channel.", name, nameOfChannel));
+            InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has added new {2} channel.", this.GetType(), name, nameOfChannel));
         }
 
         public void Reset()
@@ -153,7 +141,7 @@ namespace SmartHouse.Classes
             IResetable channelModule = (IResetable)ChannelModule;
             channelModule.Reset();
             VolumeModule.Reset();
-            InvokeEventStatusChanged(String.Format("Radio: \"{0}\" has reseted.", name));
+            InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has reseted.", this.GetType(), name));
         }
 
         public override string ToString()

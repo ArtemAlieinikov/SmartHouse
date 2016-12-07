@@ -8,31 +8,12 @@ using SmartHouse.Enums;
 
 namespace SmartHouse.Classes
 {
-    class AirConditioning : Device, IEnablable, IFreezable, IResetable
+    class AirConditioning : Device, IFreezable, IResetable
     {
         protected FreezeLevels freezeLevel;
 
         public AirConditioning(string name) : base (name)
         { }
-
-        public void On()
-        {
-            if (!State)
-            {
-                State = true;
-                InvokeEventStatusChanged(String.Format("Air conditioning: \"{0}\" has turned on.", name));
-            }
-            else { }
-        }
-        public void Off()
-        {
-            if (State)
-            {
-                State = false;
-                InvokeEventStatusChanged(String.Format("Air conditioning: \"{0}\" has turned off.", name));
-            }
-            else { }
-        }
 
         public void FreezUp()
         {
@@ -52,7 +33,7 @@ namespace SmartHouse.Classes
             {
                 freezeLevel = FreezeLevels.Middle;
             }
-            InvokeEventStatusChanged(String.Format("Air conditioning: \"{0}\" has changed the temperature to {1}.",name, freezeLevel));
+            InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed the temperature to {2}.",this.GetType(), name, freezeLevel));
         }
         public void FreezDown()
         {
@@ -72,13 +53,13 @@ namespace SmartHouse.Classes
             {
                 freezeLevel = FreezeLevels.High;
             }
-            InvokeEventStatusChanged(String.Format("Air conditioning: \"{0}\" has changed the temperature to {1}.", name, freezeLevel));
+            InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed the temperature to {2}.", this.GetType(), name, freezeLevel));
         }
 
         public void Reset()
         {
             freezeLevel = FreezeLevels.Low;
-            InvokeEventStatusChanged(String.Format("Air conditioning: \"{0}\" has reseted.", name));
+            InvokeEventStatusChanged(String.Format("{0}: \"{1}\" has reseted.",this.GetType() , name));
         }
 
         public override string ToString()

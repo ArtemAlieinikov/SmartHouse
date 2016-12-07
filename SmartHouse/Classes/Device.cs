@@ -7,7 +7,7 @@ using SmartHouse.Interfaces;
 
 namespace SmartHouse.Classes
 {
-    abstract class Device
+    abstract class Device : IEnablable
     {
         protected string name;
         protected bool state;
@@ -46,12 +46,43 @@ namespace SmartHouse.Classes
             Name = name;
         }
 
-        public void InvokeEventStatusChanged(string message)
+        protected void InvokeEventStatusChanged(string message)
         {
             if (EventStateChanged != null)
             {
                 EventStateChanged(message);
             }
+        }
+
+        public virtual bool On()
+        {
+            bool result;
+            if (!State)
+            {
+                result = true;
+                State = true;
+                InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has turned on.",this.GetType(), name));
+            }
+            else 
+            {
+                result = false;
+            }
+            return result;
+        }
+        public virtual bool Off()
+        {
+            bool result;
+            if (State)
+            {
+                result = true;
+                State = false;
+                InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has turned on.", this.GetType(), name));
+            }
+            else 
+            {
+                result = false;
+            }
+            return result;
         }
     }
 }

@@ -12,13 +12,9 @@ namespace SmartHouse
     {
         static void Main(string[] args)
         {
-            AirConditioning testCond = new AirConditioning("Cond");
-            TextLoggingModule logger = new TextLoggingModule("D:\\");
-            testCond.EventStateChanged += logger.Write;
-
-            testCond.On();
-            testCond.Off();
-            testCond.FreezUp();
+            //Добавил паттерн Фабричній метод.
+            Menu consoleMenu = new Menu();
+            consoleMenu.Run();
         }
     }
 }
