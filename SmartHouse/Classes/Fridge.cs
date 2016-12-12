@@ -27,13 +27,15 @@ namespace SmartHouse.Classes
             set
             {
                 currentLamp = value;
-                InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed the lamp to {2}.",this.GetType(), name, ((Device)value).Name));
+                InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed the lamp to {2}.", this.GetType(), name, ((Device)value).Name));
             }
         }
 
-        public Fridge(string name) : base (name)
+        public Fridge(string name)
+            : base(name)
         { }
-        public Fridge(string name, ILampable currentLamp) : base (name)
+        public Fridge(string name, ILampable currentLamp)
+            : base(name)
         {
             CurrentLamp = currentLamp;
         }
@@ -83,7 +85,7 @@ namespace SmartHouse.Classes
             {
                 freezeLevel = FreezeLevels.Middle;
             }
-            InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed the temperature to {2}.",this.GetType(), name, freezeLevel));
+            InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed the temperature to {2}.", this.GetType(), name, freezeLevel));
         }
         public void FreezDown()
         {
@@ -110,7 +112,7 @@ namespace SmartHouse.Classes
         {
             glaciationLevel = 0;
             glaciate = false;
-            InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has defrosted.",this.GetType(), name));
+            InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has defrosted.", this.GetType(), name));
         }
 
         public override bool On()
@@ -131,14 +133,14 @@ namespace SmartHouse.Classes
         public void Reset()
         {
             freezeLevel = FreezeLevels.Low;
-            InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has reseted.",this.GetType(), name));
+            InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has reseted.", this.GetType(), name));
         }
 
         public void TurnOnLamp()
         {
             if (CurrentLamp != null)
             {
-                InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has turned on the {2} lamp",this.GetType(), name, ((Device)currentLamp).Name));
+                InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has turned on the {2} lamp", this.GetType(), name, ((Device)currentLamp).Name));
                 CurrentLamp.On();
             }
             else { }
@@ -147,7 +149,7 @@ namespace SmartHouse.Classes
         {
             if (CurrentLamp != null)
             {
-                InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has turned off the {2} lamp",this.GetType(), name, ((Device)currentLamp).Name));
+                InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has turned off the {2} lamp", this.GetType(), name, ((Device)currentLamp).Name));
                 CurrentLamp.Off();
             }
             else { }
@@ -157,7 +159,7 @@ namespace SmartHouse.Classes
         {
             if (CurrentLamp != null)
             {
-                InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed the {2} lapm brightness to {3}.",this.GetType(), name, ((Device)currentLamp).Name, CurrentLamp.BrightnessLevel));
+                InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed the {2} lapm brightness to {3}.", this.GetType(), name, ((Device)currentLamp).Name, CurrentLamp.BrightnessLevel));
                 CurrentLamp.BrightUp();
             }
             else { }
@@ -166,7 +168,7 @@ namespace SmartHouse.Classes
         {
             if (CurrentLamp != null)
             {
-                InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed the {2} lapm brightness to {3}.",this.GetType(), name, ((Device)currentLamp).Name, CurrentLamp.BrightnessLevel));
+                InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed the {2} lapm brightness to {3}.", this.GetType(), name, ((Device)currentLamp).Name, CurrentLamp.BrightnessLevel));
                 CurrentLamp.BrightDown();
             }
             else { }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SmartHouse.Interfaces.Lamp
 {
-    interface ILampable: IEnablable, IBrightable
+    interface ILampable : IEnablable, IBrightable
     {
     }
 }

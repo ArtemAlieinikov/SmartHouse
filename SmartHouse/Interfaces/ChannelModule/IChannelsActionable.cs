@@ -8,7 +8,7 @@ namespace SmartHouse.Interfaces.ChannelModule
 {
     interface IChannelsActionable
     {
-        int NumberOfChannels { get;  }
+        int NumberOfChannels { get; }
         int ActualChannel { get; }
         string Current { get; }
         bool Up();

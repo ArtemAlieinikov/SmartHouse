@@ -8,7 +8,7 @@ namespace SmartHouse.Enums
 {
     enum FreezeLevels
     {
-        Low, 
+        Low,
         Middle,
         High,
         SuperHigh

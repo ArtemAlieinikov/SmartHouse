@@ -15,7 +15,7 @@ namespace SmartHouse.Classes
         public event Action<string> EventStateChanged;
 
         /*Виртуальные свойства для случая, если потребуется реализовывать настандартную
-         * логику в наследниках (При переопределении см. подстановки Лисков )*/ 
+         * логику в наследниках (При переопределении см. подстановки Лисков )*/
         public virtual string Name
         {
             get
@@ -61,9 +61,9 @@ namespace SmartHouse.Classes
             {
                 result = true;
                 State = true;
-                InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has turned on.",this.GetType(), name));
+                InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has turned on.", this.GetType(), name));
             }
-            else 
+            else
             {
                 result = false;
             }
@@ -78,7 +78,7 @@ namespace SmartHouse.Classes
                 State = false;
                 InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has turned on.", this.GetType(), name));
             }
-            else 
+            else
             {
                 result = false;
             }

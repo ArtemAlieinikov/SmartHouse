@@ -12,7 +12,8 @@ namespace SmartHouse.Classes
     {
         protected FreezeLevels freezeLevel;
 
-        public AirConditioning(string name) : base (name)
+        public AirConditioning(string name)
+            : base(name)
         { }
 
         public void FreezUp()
@@ -33,7 +34,7 @@ namespace SmartHouse.Classes
             {
                 freezeLevel = FreezeLevels.Middle;
             }
-            InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed the temperature to {2}.",this.GetType(), name, freezeLevel));
+            InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed the temperature to {2}.", this.GetType(), name, freezeLevel));
         }
         public void FreezDown()
         {
@@ -59,7 +60,7 @@ namespace SmartHouse.Classes
         public void Reset()
         {
             freezeLevel = FreezeLevels.Low;
-            InvokeEventStatusChanged(String.Format("{0}: \"{1}\" has reseted.",this.GetType() , name));
+            InvokeEventStatusChanged(String.Format("{0}: \"{1}\" has reseted.", this.GetType(), name));
         }
 
         public override string ToString()

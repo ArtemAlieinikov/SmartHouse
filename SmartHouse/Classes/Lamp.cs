@@ -23,11 +23,12 @@ namespace SmartHouse.Classes
             set
             {
                 brightnessLevel = value;
-                InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed the brightness to {2}.",this.GetType(), name, value));
+                InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed the brightness to {2}.", this.GetType(), name, value));
             }
         }
 
-        public Lamp(string name) : base (name)
+        public Lamp(string name)
+            : base(name)
         { }
 
         public void BrightUp()

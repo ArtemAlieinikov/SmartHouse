@@ -16,9 +16,9 @@ namespace SmartHouse.Classes
         /// <summary>
         /// </summary>
         /// <exception cref="System.ArgumentNullException">Thrown when argument is null</exception>
-        public IVariable VolumeModule 
+        public IVariable VolumeModule
         {
-            get 
+            get
             {
                 return volumeModule;
             }
