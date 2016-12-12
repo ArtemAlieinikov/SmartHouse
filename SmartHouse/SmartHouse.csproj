@@ -42,20 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\AirConditioning.cs" />
-    <Compile Include="Classes\AirConditioningCreator.cs" />
     <Compile Include="Classes\ChannelModule.cs" />
-    <Compile Include="Classes\ComplexDeviceCreator.cs" />
-    <Compile Include="Classes\FridgeCreator.cs" />
     <Compile Include="Classes\Device.cs" />
+    <Compile Include="Classes\DeviceBuilder.cs" />
     <Compile Include="Classes\Fridge.cs" />
     <Compile Include="Classes\Lamp.cs" />
-    <Compile Include="Classes\LampCreator.cs" />
     <Compile Include="Classes\Menu.cs" />
     <Compile Include="Classes\Radio.cs" />
-    <Compile Include="Classes\RadioCreator.cs" />
-    <Compile Include="Classes\SimpleDeviceCreator.cs" />
     <Compile Include="Classes\TelevisionSet.cs" />
-    <Compile Include="Classes\TelevisionSetCreator.cs" />
     <Compile Include="Classes\TextLoggingModule.cs" />
     <Compile Include="Classes\ValueModule.cs" />
     <Compile Include="Enums\Brightness.cs" />
