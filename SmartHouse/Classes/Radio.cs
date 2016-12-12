@@ -118,7 +118,7 @@ namespace SmartHouse.Classes
         }
         public void ChannelDown()
         {
-            if (ChannelModule.Up())
+            if (ChannelModule.Down())
             {
                 InvokeEventStatusChanged(String.Format("{0}:\t \"{1}\" has changed channel to {2}.", this.GetType(), name, ChannelModule.Current));
             }

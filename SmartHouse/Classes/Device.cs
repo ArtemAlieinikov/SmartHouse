@@ -35,7 +35,7 @@ namespace SmartHouse.Classes
                 return state;
             }
 
-            set
+            protected set
             {
                 state = value;
             }

@@ -147,7 +147,7 @@ namespace SmartHouse.Classes
         public override string ToString()
         {
             string stringState = state ? "On" : "Off";
-            return String.Format("Television: \"{0}\", state - {1}, volume - {2}%, number of channels - {3}.\n\tCurrent channel - {4}.", Name, stringState, VolumeLevel, ChannelModule.NumberOfChannels, CurrentChannel);
+            return String.Format("TV: \"{0}\", state - {1}, volume - {2}%, number of channels - {3}.\n\tCurrent channel - {4}.", Name, stringState, VolumeLevel, ChannelModule.NumberOfChannels, CurrentChannel);
         }
     }
 }

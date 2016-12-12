@@ -43,6 +43,7 @@ namespace SmartHouse.Classes
             else
             { }
         }
+    
         public void Write(string message)
         {
             string actionTime = String.Format("{0}:{1}:{2}", DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
@@ -50,7 +51,7 @@ namespace SmartHouse.Classes
             {
                 using(StreamWriter writer = new StreamWriter(pathToFile, true, Encoding.Default))
                 {
-                    writer.WriteLine(actionTime + " | " + message);
+                    writer.WriteLine(actionTime + " \t\t " + message);
                 }
             }
             catch (Exception e)

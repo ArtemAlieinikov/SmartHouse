@@ -134,7 +134,7 @@ namespace SmartHouse.Classes
 
         public void Reset()
         {
-            Value /= 2;
+            Value = (max + min) / 2;
         }
     }
 }

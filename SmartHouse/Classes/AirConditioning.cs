@@ -65,7 +65,7 @@ namespace SmartHouse.Classes
         public override string ToString()
         {
             string stringState = state ? "On" : "Off";
-            return String.Format("Air conditioning: \"{0}\", state - {1}, freezing level - {2}.", Name, stringState, freezeLevel);
+            return String.Format("Conditioning: \"{0}\", state - {1}, freezing level - {2}.", Name, stringState, freezeLevel);
         }
     }
 }
