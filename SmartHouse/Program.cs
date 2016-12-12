@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using SmartHouse.Classes;
+using SmartHouse.Interfaces;
 
 namespace SmartHouse
 {
@@ -12,9 +13,8 @@ namespace SmartHouse
     {
         static void Main(string[] args)
         {
-            //Добавил паттерн Фабричній метод.
-            Menu consoleMenu = new Menu();
-            consoleMenu.Run();
+            Menu menu = new Menu();
+            menu.Run();
         }
     }
 }
